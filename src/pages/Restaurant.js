@@ -6,7 +6,7 @@ import FoodsCard from '../components/FoodsCard';
 function Restaurant() {
   return (
     <>
-      <h1 align="center" className='p-3'>Welcome to the Restaurant</h1>
+      <h1 align="center" className='p-3'>Welcome to the MyRestaurant</h1>
       <Row xs={1} md={3} className="g-4">
         {foodsArray.map((foods, idx) => (
           <Col align="center" key={idx}>

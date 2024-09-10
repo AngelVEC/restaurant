@@ -2,6 +2,7 @@ import React from 'react';
 import {Card, Button, Form, Row, Col} from 'react-bootstrap';
 import { CartContext } from './Cart';
 import { useContext } from 'react';
+import placeholderIMG from "../public/placeholder.png"
 
 function FoodsCard(props) {
   const food = props.food;
@@ -13,6 +14,7 @@ function FoodsCard(props) {
   return (
     <Card>
       <Card.Body>
+        <Card.Img variant="top" src={placeholderIMG}/>
         <Card.Title>{food.title}</Card.Title>
         <Card.Text>${food.price}</Card.Text>
         { foodQuantity > 0 
