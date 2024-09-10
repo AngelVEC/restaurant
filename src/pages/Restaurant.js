@@ -7,7 +7,7 @@ function Restaurant() {
   return (
     <>
       <h1 align="center" className='p-3'>Welcome to the Restaurant</h1>
-      <Row xs={1} md={3} classname="g-4">
+      <Row xs={1} md={3} className="g-4">
         {foodsArray.map((foods, idx) => (
           <Col align="center" key={idx}>
             <FoodsCard food= {foods}/>
