@@ -1,12 +1,16 @@
-import {Button, Container, Navbar, Modal} from 'react-bootstrap'
+import {Button, Navbar, Modal} from 'react-bootstrap'
 import { useContext, useState } from 'react';
 import { CartContext } from './Cart';
 import CartFoods from './CartFoods';
+import FetchFood from '../food/FetchFood';
 
 function NavbarComponent()
 {
+    //Fetcing the foodData
+    const foodData = FetchFood();
+    
+    //Initialize the cart
     const cart = useContext(CartContext);
-
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -34,11 +38,11 @@ function NavbarComponent()
                             {
                                 cart.items.map((foodsInCart, idx) =>
                                 (
-                                    <CartFoods key={idx} id={foodsInCart.id} quantity={foodsInCart.quantity}/>
+                                    <CartFoods key={idx} id={foodsInCart.id} quantity={foodsInCart.quantity} foodData={foodData}/>
                                 ))
                             }
 
-                            <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
+                            <h1>Total: {cart.getTotalCost(foodData).toFixed(2)}</h1>
 
                             <Button variant="success">
                                 Purchase Items!

@@ -7,6 +7,8 @@ import placeholderIMG from "../public/placeholder.png"
 function FoodsCard(props) {
   const food = props.food;
   const cart = useContext(CartContext);
+  const foodName = food.foodName;
+  const foodPrice = food.price.toFixed(2);
   const foodQuantity = cart.getQuantity(food.id);
   // to print what object in the cart
   // console.log(cart.items);
@@ -15,8 +17,8 @@ function FoodsCard(props) {
     <Card>
       <Card.Body>
         <Card.Img variant="top" src={placeholderIMG}/>
-        <Card.Title>{food.title}</Card.Title>
-        <Card.Text>${food.price}</Card.Text>
+        <Card.Title>{(foodName)}</Card.Title>
+        <Card.Text>${foodPrice}</Card.Text>
         { foodQuantity > 0 
           ?
             <>

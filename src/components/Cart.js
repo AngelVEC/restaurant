@@ -98,11 +98,11 @@ export function CartProvider({children})
         )
     }
 
-    function getTotalCost()
+    function getTotalCost(foodData)
     {
         let totalCost = 0;
         cartProducts.map((cartItem) =>{
-            const foodInfo = getFoodInfo(cartItem.id);
+            const foodInfo = getFoodInfo(foodData, cartItem.id);
             totalCost += (foodInfo.price * cartItem.quantity);
         });
         return totalCost;

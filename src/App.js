@@ -5,7 +5,7 @@ import { Container} from 'react-bootstrap';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Cancel from './pages/Cancel';
 import Success from './pages/Success';
-import Restaurant from './pages/Restaurant';
+import Restaurant from './pages/RestaurantPage';
 import CartProvider from './components/Cart';
 
 function App() {
