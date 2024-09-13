@@ -42,7 +42,7 @@ function NavbarComponent()
                                 ))
                             }
 
-                            <h1>Total: {cart.getTotalCost(foodData).toFixed(2)}</h1>
+                            <h1>Total: ${cart.getTotalCost(foodData).toFixed(2)} ({foodsCount} items)</h1>
 
                             <Button variant="success">
                                 Purchase Items!

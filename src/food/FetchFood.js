@@ -4,18 +4,19 @@ import axios from 'axios';
 //Fetching the food from .net API
 function FetchFood(){
     const [foodsTest, setFoodsTest] = useState([]);
-    const queryTest =
-    `
-        query Allfoods {
-            allfoods {
-                id
-                foodName
-                price
-            }
-        }
-    `;
 
     useEffect(() => {
+        const queryTest =
+        `
+            query Allfoods {
+                allfoods {
+                    id
+                    foodName
+                    price
+                }
+            }
+        `;
+        
         let config = {
             method: 'post',
             url: "http://localhost:5246/graphql/",

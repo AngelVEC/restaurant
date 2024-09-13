@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { foodsArray, getFoodInfo } from "../food/RestaurantFood";
+import { getFoodInfo } from "../food/RestaurantFood";
 
 export const CartContext = createContext
 ({
@@ -101,7 +101,7 @@ export function CartProvider({children})
     function getTotalCost(foodData)
     {
         let totalCost = 0;
-        cartProducts.map((cartItem) =>{
+        cartProducts.forEach((cartItem) =>{
             const foodInfo = getFoodInfo(foodData, cartItem.id);
             totalCost += (foodInfo.price * cartItem.quantity);
         });
