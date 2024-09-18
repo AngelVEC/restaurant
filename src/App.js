@@ -7,6 +7,7 @@ import Cancel from './pages/Cancel';
 import Success from './pages/Success';
 import Restaurant from './pages/RestaurantPage';
 import CartProvider from './components/Cart';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route index element={<Restaurant/>}/>
             <Route path="success" element={<Success/>}/>
             <Route path="cancel" element={<Cancel/>}/>
+            <Route path="register" element={<Register/>}/>
             <Route/>
           </Routes>
         </BrowserRouter>
