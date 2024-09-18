@@ -3,12 +3,17 @@ import { useContext, useState } from 'react';
 import { CartContext } from './Cart';
 import CartFoods from './CartFoods';
 import FetchFood from '../food/FetchFood';
+import {jwtDecode} from 'jwt-decode';
 
 function NavbarComponent()
 {
     //Fetcing the foodData
     const foodData = FetchFood();
-    
+
+    const token = localStorage.getItem('jwt-token');
+
+    //console.log(jwtDecode(token).username)
+
     //Initialize the cart
     const cart = useContext(CartContext);
     const [show, setShow] = useState(false);
@@ -22,12 +27,29 @@ function NavbarComponent()
             <Navbar expand="sm">
                 <Navbar.Brand href="/">MyRestaurant</Navbar.Brand>
                 <Navbar.Toggle/>
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link href="/register">Register</Nav.Link>
-                        <Nav.Link href="/login">Login</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
+                {
+                    //When token is equal null, will print the register and login
+                    token === null
+                    ?
+                        <>
+                            <Navbar.Collapse id="basic-navbar-nav">
+                                <Nav className="me-auto">
+                                    <Nav.Link href="/register">Register</Nav.Link>
+                                    <Nav.Link href="/login">Login</Nav.Link>
+                                </Nav>
+                            </Navbar.Collapse>
+                        </>
+                    :
+                    //but when jwt token found
+                    <>
+                        <Navbar.Collapse id="basic-navbar-nav">
+                                <Nav className="me-auto">
+                                    <Nav.Link href="/logout">Logout({jwtDecode(token).username})</Nav.Link>
+                                </Nav>
+                            </Navbar.Collapse>
+                    </>
+                }
+
                 <Navbar.Collapse className='justify-content-end'>
                     <Button onClick={handleShow}>Cart ({foodsCount} items) </Button>
                 </Navbar.Collapse>
