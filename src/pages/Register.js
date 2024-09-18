@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Register(props) {
     const [username, setUsername] = useState("");
@@ -24,13 +27,6 @@ function Register(props) {
                 createUser(username: "${username}", password: "${password}") 
             }
         `;
-        const registerVariable =
-        {
-            "username": username,
-            "password": password,
-        }
-
-        console.log(registerVariable);
 
         let config = {
             method: 'post',
@@ -61,12 +57,21 @@ function Register(props) {
     }
 
     return (
+
         <div>
-            <h1>Register Page</h1>    
-            <p>Username: <input id={"username"} type={'text'} onChange={userNameHandler}/></p>
-            <p>Password: <input id={"password"} type={'password'} onChange={passwordHandler} /></p>
-            <p><button id={"registerbtn"} onClick={register}>Register</button></p>
-            <p id={'login_status'}>{login_status}</p>
+            <Container>
+                <Row className="justify-content-md-center">
+                    <Col></Col>
+                    <Col>
+                        <h1>Register</h1>       
+                        <p>Username: <input id={"username"} type={'text'} onChange={userNameHandler}/></p>
+                        <p>Password: <input id={"password"} type={'password'} onChange={passwordHandler} /></p>
+                        <p><button id={"registerbtn"} onClick={register}>Register</button></p>
+                        <p id={'login_status'}>{login_status}</p>
+                    </Col>
+                    <Col></Col>
+                </Row>
+            </Container>
         </div>
     );
 }
