@@ -19,7 +19,7 @@ function FetchFood(){
         
         let config = {
             method: 'post',
-            url: "http://localhost:5246/graphql/",
+            url: process.env.REACT_APP_API_URL,
             data: 
             {
                 query: queryTest

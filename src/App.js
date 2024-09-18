@@ -8,6 +8,7 @@ import Success from './pages/Success';
 import Restaurant from './pages/RestaurantPage';
 import CartProvider from './components/Cart';
 import Register from './pages/Register';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="success" element={<Success/>}/>
             <Route path="cancel" element={<Cancel/>}/>
             <Route path="register" element={<Register/>}/>
+            <Route path="login" element={<Login/>}/>
             <Route/>
           </Routes>
         </BrowserRouter>
