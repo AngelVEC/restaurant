@@ -22,15 +22,30 @@ function NavbarComponent()
 
     const foodsCount = cart.items.reduce((sum, foods) => sum + foods.quantity, 0);
 
-    return (
-        <>
-            <Navbar expand="sm">
-                <Navbar.Brand href="/">MyRestaurant</Navbar.Brand>
-                <Navbar.Toggle/>
-                {
-                    //When token is equal null, will print the register and login
-                    token === null
-                    ?
+    const location = window.location.pathname;
+
+    //check what is the endpoint, if there is "admin", it will hide login/register for customer and also cart
+    if (location.match("admin"))
+    {
+        return (
+            <>
+                <Navbar expand="sm">
+                    <Navbar.Brand href="/">MyRestaurant</Navbar.Brand>
+                </Navbar>
+            </>
+        )
+    }
+    else
+    {
+        return (
+            <>
+                <Navbar expand="sm">
+                    <Navbar.Brand href="/">MyRestaurant</Navbar.Brand>
+                    <Navbar.Toggle/>
+                    {
+                        //When token is equal null, will print the register and login
+                        token === null
+                        ?
                         <>
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="me-auto">
@@ -39,50 +54,53 @@ function NavbarComponent()
                                 </Nav>
                             </Navbar.Collapse>
                         </>
-                    :
-                    //but when jwt token found
-                    <>
-                        <Navbar.Collapse id="basic-navbar-nav">
-                                <Nav className="me-auto">
-                                    <Nav.Link href="/logout">Logout({jwtDecode(token).username})</Nav.Link>
-                                </Nav>
-                            </Navbar.Collapse>
-                    </>
-                }
-
-                <Navbar.Collapse className='justify-content-end'>
-                    <Button onClick={handleShow}>Cart ({foodsCount} items) </Button>
-                </Navbar.Collapse>
-            </Navbar>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Shopping Cart</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    {foodsCount > 0
-                    ?
+                        :
+                        //but when jwt token found
                         <>
-                            <p>Items in your cart: </p>
-                            {
-                                cart.items.map((foodsInCart, idx) =>
-                                (
-                                    <CartFoods key={idx} id={foodsInCart.id} quantity={foodsInCart.quantity} foodData={foodData}/>
-                                ))
-                            }
-
-                            <h1>Total: ${cart.getTotalCost(foodData).toFixed(2)} ({foodsCount} items)</h1>
-
-                            <Button variant="success">
-                                Purchase Items!
-                            </Button>
+                            <Navbar.Collapse id="basic-navbar-nav">
+                                    <Nav className="me-auto">
+                                        <Nav.Link href="/logout">Logout({jwtDecode(token).username})</Nav.Link>
+                                    </Nav>
+                            </Navbar.Collapse>
                         </>
-                    :
-                        <h1>There is no items in the cart</h1>
                     }
-                 </Modal.Body>
-            </Modal>
-        </>
-    )
+    
+                    <Navbar.Collapse className='justify-content-end'>
+                        <Button onClick={handleShow}>Cart ({foodsCount} items) </Button>
+                    </Navbar.Collapse>
+                </Navbar>
+                
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Shopping Cart</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        {foodsCount > 0
+                        ?
+                            <>
+                                <p>Items in your cart: </p>
+                                {
+                                    cart.items.map((foodsInCart, idx) =>
+                                    (
+                                        <CartFoods key={idx} id={foodsInCart.id} quantity={foodsInCart.quantity} foodData={foodData}/>
+                                    ))
+                                }
+    
+                                <h1>Total: ${cart.getTotalCost(foodData).toFixed(2)} ({foodsCount} items)</h1>
+    
+                                <Button variant="success">
+                                    Purchase Items!
+                                </Button>
+                            </>
+                        :
+                            <h1>There is no items in the cart</h1>
+                        }
+                     </Modal.Body>
+                </Modal>
+            </>
+        )
+    }
+
 }
 
 export default NavbarComponent;
