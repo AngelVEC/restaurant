@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Button, Form, Row, Col} from 'react-bootstrap';
+import {Card, Button} from 'react-bootstrap';
 import placeholderIMG from "../../public/placeholder.png"
 
 function AdminCard(props) {
