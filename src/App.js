@@ -11,6 +11,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import EditFood from './pages/admin/EditFood';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="login" element={<Login/>}/>
             <Route path="logout" element={<Logout/>}/>
             <Route path="admin" element={<AdminDashboard/>}/>
+            <Route path="admin/editFood" element={<EditFood/>}/>
             <Route/>
           </Routes>
         </BrowserRouter>

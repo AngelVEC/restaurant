@@ -1,6 +1,7 @@
 import React from 'react';
 import {Card, Button} from 'react-bootstrap';
 import placeholderIMG from "../../public/placeholder.png"
+import { Link } from 'react-router-dom';
 
 function AdminCard(props) {
   const food = props.food;
@@ -15,7 +16,9 @@ function AdminCard(props) {
         <Card.Img variant="top" src={placeholderIMG}/>
         <Card.Title>{(foodName)}</Card.Title>
         <Card.Text>${foodPrice}</Card.Text>
-        <Button variant='outline-primary' style={{marginRight: "10px"}}>Edit</Button>
+        <Link to = "/admin/editFood" state={{food}}>
+          <Button variant='outline-primary' style={{marginRight: "10px"}}>Edit</Button>
+        </Link>
         <Button variant='outline-danger'>Delete</Button>
       </Card.Body>
     </Card>
