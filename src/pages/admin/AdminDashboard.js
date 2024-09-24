@@ -69,11 +69,11 @@ function AdminDashboard() {
                         </Modal.Header>
                         <Modal.Body>
                             <Row>
-                                <Col md={{ span: 3, offset: 0 }}><p>Food Name:</p></Col>
+                                <Col md={{ span: 3, offset: 0 }}><p style={{textAlign:'right'}}>Food Name</p></Col>
                                 <Col><input id={"foodName"} type={'text'} onChange={foodNameHandler} /></Col>
                             </Row>
                             <Row>
-                                <Col md={{ span: 3, offset: 0 }}><p>Price: </p></Col>
+                                <Col md={{ span: 3, offset: 0 }}><p style={{textAlign:'right'}}>Price </p></Col>
                                 <Col><input id={"price"} type={'text'} onChange={priceHandler} /></Col>
                             </Row>
                             <Button variant="success" onClick={addNewFood}>Add new Food!</Button>
