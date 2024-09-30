@@ -16,6 +16,8 @@ function AdminDashboard() {
     const [foodName, setFoodName] = useState("");
     const [price, setPrice] = useState("");
 
+    const adminToken = localStorage.getItem('jwt-token-for-admin');
+
     function foodNameHandler(e) {
         setFoodName(e.target.value);
     }
@@ -54,6 +56,11 @@ function AdminDashboard() {
             .catch((error) => {
                 console.log(error);                
             });
+    }
+
+    if(!adminToken)
+    {
+        window.location.replace("/")
     }
 
     return (
