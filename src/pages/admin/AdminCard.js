@@ -2,6 +2,7 @@ import React from 'react';
 import {Card, Button} from 'react-bootstrap';
 import placeholderIMG from "../../public/placeholder.png"
 import { Link } from 'react-router-dom';
+import DeleteFood from './DeleteFood';
 
 function AdminCard(props) {
   const food = props.food;
@@ -19,7 +20,7 @@ function AdminCard(props) {
         <Link to = "/admin/editFood" state={{food}}>
           <Button variant='outline-primary' style={{marginRight: "10px"}}>Edit</Button>
         </Link>
-        <Button variant='outline-danger'>Delete</Button>
+        <Button variant='outline-danger' onClick={() => DeleteFood(food)}>Delete</Button>
       </Card.Body>
     </Card>
   )
