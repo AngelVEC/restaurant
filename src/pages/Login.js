@@ -69,7 +69,7 @@ function Login() {
                 }
                 else
                 {
-                    console.log("user is not in the database");
+                    setLogin_Status("user is not in the database");
                 }
             })
             .catch((error) => {
