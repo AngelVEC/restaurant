@@ -24,6 +24,11 @@ function NavbarComponent()
 
     const location = window.location.pathname;
 
+    function Purchase ()
+    {
+        window.location.replace("/success")
+    }
+
     //check what is the endpoint, if there is "admin", it will hide login/register for customer and also cart
     if (location.match("admin"))
     {
@@ -88,7 +93,7 @@ function NavbarComponent()
     
                                 <h1>Total: ${cart.getTotalCost(foodData).toFixed(2)} ({foodsCount} items)</h1>
     
-                                <Button variant="success">
+                                <Button variant="success" onClick={Purchase}>
                                     Purchase Items!
                                 </Button>
                             </>
