@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import Logout from './pages/Logout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import EditFood from './pages/admin/EditFood';
+import AdminLogin from './pages/admin/AdminLogin';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="logout" element={<Logout/>}/>
             <Route path="admin" element={<AdminDashboard/>}/>
             <Route path="admin/editFood" element={<EditFood/>}/>
+            <Route path="admin/login" element={<AdminLogin/>}/>
             <Route/>
           </Routes>
         </BrowserRouter>
