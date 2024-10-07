@@ -11,6 +11,7 @@ function NavbarComponent()
     const foodData = FetchFood();
 
     const token = localStorage.getItem('jwt-token');
+    const adminToken = localStorage.getItem('jwt-token-for-admin');
 
     //console.log(jwtDecode(token).username)
 
@@ -36,6 +37,16 @@ function NavbarComponent()
             <>
                 <Navbar expand="sm">
                     <Navbar.Brand href="/">MyRestaurant</Navbar.Brand>
+                    {
+                        adminToken === null
+                        ?
+                        <>
+                        </>
+                        :
+                        <>
+                            <Nav.Link href="/admin/logout">Logout</Nav.Link>
+                        </>
+                    }
                 </Navbar>
             </>
         )
